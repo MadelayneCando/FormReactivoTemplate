@@ -1,0 +1,60 @@
+<br><br>
+<h3>Formulario de Registro</h3>
+<br>
+<div class="container">
+    <form (ngSubmit)="submit()" #forma="ngForm">
+        <label for="cedula"> <b>Cédula</b></label>
+        <input
+            type="text"
+            #cedula = "ngModel"
+            [(ngModel)]="register.cedula"
+            placeholder="Introduzca su cédula"
+            name="cedula"
+            minlength="10"
+            class="form-control"
+            required
+            [ngClass]="{'is-valid': !cedula.invalid, 'is-invalid': cedula.invalid}">        
+        
+        <label for="nombre"> <b>Nombre</b></label>
+        <input
+            type="text"
+            #nombre = "ngModel"
+            [(ngModel)]="register.nombre"
+            placeholder="Introduzca su nombre"
+            name="nombre"
+            minlength="3"
+            class="form-control"
+            required
+            [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}">        
+        
+        <label for="fechanac"> <b>Fecha:</b></label>
+        <input 
+            type="date" 
+            #fechanac="ngModel"
+            [(ngModel)]="register.fechanac"
+            placeholder="Seleccione su fecha de nacimiento"
+            name="fechanac"
+            class="form-control"
+            required
+            [ngClass]="{'is-valid': !fechanac.invalid, 'is-invalid': fechanac.invalid}">  
+        <label for="seleccion"><b>Ciudad: </b></label>
+            <select
+                type="seleccion"
+                #ciudad="ngModel"
+                [(ngModel)]="register.ciudad" 
+                name="ciudad" 
+                required
+                [ngClass]="{'is-valid': !ciudad.invalid, 'is-invalid': ciudad.invalid}">  >
+              <option value="" disabled selected>Elige una opción</option>
+              <option value="opcion1">Huaquillas</option>
+              <option value="opcion2">Machala</option>
+              <option value="opcion3">Arenillas</option>
+
+            </select>
+            <br><br>
+            <div class="row">
+                <button class="btn btn-primary" type="submit" [disabled]="!forma.valid" class="signup-btn">Ok</button>
+                <button class="btn btn-secondary" type="submit" class="signup-btn">Cancelar</button>                
+            </div>
+    </form>
+</div>
